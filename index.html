@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HandwerkerBonus - §35a Steuerbonus für Handwerkerrechnungen | Bis zu 1.200 € zurück</title>
+  <meta name="description" content="HandwerkerBonus prüft Handwerkerrechnungen per KI, berechnet den §35a-Bonus automatisch und erstellt einen ELSTER-fertigen PDF-Export. Kostenlos starten.">
+  <meta name="keywords" content="HandwerkerBonus, §35a, Handwerkerrechnung, Steuerbonus, ELSTER PDF, OCR Rechnung, Handwerkerleistungen, Finanzamt">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="HandwerkerBonus">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="icon" href="app-icon-light.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://hardwarebonus.eu/">
+
+  <meta property="og:title" content="HandwerkerBonus - Bis zu 1.200 € vom Finanzamt zurück">
+  <meta property="og:description" content="OCR-Scan, formale K-01 bis K-08 Prüfung, §35a-Berechnung und ELSTER-fertiger PDF-Export in unter 60 Sekunden.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="HandwerkerBonus">
+  <meta property="og:url" content="https://hardwarebonus.eu/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HandwerkerBonus - §35a Steuerbonus automatisch berechnen">
+  <meta name="twitter:description" content="Bis zu 1.200 € pro Jahr zurückholen: Handwerkerrechnungen per KI prüfen und ELSTER-PDF automatisch erzeugen.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HandwerkerBonus",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "description": "Web-App zum OCR-Scan deutscher Handwerkerrechnungen, zur Berechnung des §35a-Steuerbonus und zum ELSTER-fertigen PDF-Export.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Kostenlos für 1 Beleg pro Jahr"},
+    "author": {"@type": "Organization", "name": "WAMOCON GmbH"}
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Was ist §35a und wer hat Anspruch?", "acceptedAnswer": {"@type": "Answer", "text": "§35a EStG ist die Steuerermäßigung für Handwerkerleistungen im Haushalt. Bis zu 20% der Lohnkosten (max. 1.200 € pro Jahr) können direkt von der Einkommensteuer abgezogen werden. Berechtigt sind alle Mieter und Eigentümer in Deutschland."}},
+      {"@type": "Question", "name": "Welche Rechnungen kann ich hochladen?", "acceptedAnswer": {"@type": "Answer", "text": "Alle Handwerkerrechnungen für Arbeiten im eigenen Haushalt: Renovierung, Reparatur, Modernisierung, Wartung und ähnliche Handwerkerleistungen. Die Rechnung muss den Lohnanteil separat ausweisen."}},
+      {"@type": "Question", "name": "Wie lange dauert die Prüfung?", "acceptedAnswer": {"@type": "Answer", "text": "Unter 60 Sekunden vom Beleg-Upload bis zum fertigen PDF für ELSTER. OCR-Erkennung und alle formalen Prüfungen (K-01..K-08) laufen automatisch."}},
+      {"@type": "Question", "name": "Ist HandwerkerBonus kostenlos?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, bis zu 1 Beleg pro Jahr ist HandwerkerBonus kostenlos nutzbar. Pro-Pläne ab €4.99 pro Monat für unbegrenzte Belege."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --color-bg: #f5f5f7;
+      --color-bg-alt: #eeeef0;
+      --color-surface: #ffffff;
+      --color-border: rgba(0,0,0,.08);
+      --color-border-hover: rgba(0,0,0,.14);
+      --color-border-accent: rgba(15,118,110,.18);
+      --color-accent: #0f766e;
+      --color-accent-dim: #115e59;
+      --color-accent-soft: rgba(15,118,110,.06);
+      --color-text-main: #111113;
+      --color-muted: #555558;
+      --color-faint: #8e8e93;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-text-main); }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased leading-relaxed">
+  <div class="gradient-orbs" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+  </div>
+
+  <div class="fixed top-0 left-0 right-0 z-[60] overflow-hidden" style="height:48px;background:#0a0a0c;border-bottom:1px solid rgba(15,118,110,.25);">
+    <div style="display:flex;align-items:center;height:100%;white-space:nowrap;animation:ticker-scroll 18s linear infinite;">
+      <span class="ticker-item">HANDWERKERBONUS &mdash; Bis zu 1.200 € vom Finanzamt zurück. KI-gestützt. DSGVO-konform.</span>
+      <span class="ticker-item">HANDWERKERBONUS &mdash; Bis zu 1.200 € vom Finanzamt zurück. KI-gestützt. DSGVO-konform.</span>
+      <span class="ticker-item">HANDWERKERBONUS &mdash; Bis zu 1.200 € vom Finanzamt zurück. KI-gestützt. DSGVO-konform.</span>
+      <span class="ticker-item">HANDWERKERBONUS &mdash; Bis zu 1.200 € vom Finanzamt zurück. KI-gestützt. DSGVO-konform.</span>
+    </div>
+  </div>
+
+  <nav class="fixed top-[48px] left-0 right-0 z-50 h-16 flex items-center transition-all duration-400" id="nav">
+    <div class="w-full max-w-[1100px] mx-auto px-5 md:px-10 flex items-center justify-between">
+      <a href="#" class="hover:opacity-70 transition-opacity flex items-center gap-2" style="text-decoration:none;">
+        <img src="app-icon-light.svg" alt="HandwerkerBonus Icon" style="width:28px;height:28px;">
+        <span style="font-size:1.5rem;font-weight:900;letter-spacing:-0.5px;color:#0f766e;">HandwerkerBonus</span>
+      </a>
+      <div class="hidden md:flex items-center gap-4">
+        <div class="nav-links-pill">
+          <a href="#problem" class="nav-link" data-nav-section="problem">Problem</a>
+          <a href="#warum" class="nav-link" data-nav-section="warum">Lösung</a>
+          <a href="#funktionen" class="nav-link" data-nav-section="funktionen">Funktionen</a>
+          <a href="#process" class="nav-link" data-nav-section="process">Prozess</a>
+          <a href="#ablauf" class="nav-link" data-nav-section="ablauf">So geht's</a>
+          <a href="#faq" class="nav-link" data-nav-section="faq">FAQ</a>
+        </div>
+        <a href="https://handworkerbonus.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;background:#0f766e;color:#fff;font-size:.8rem;font-weight:700;border-radius:999px;text-decoration:none;">Zur App</a>
+        <div class="flex items-center gap-2 text-sm font-semibold" style="color:var(--color-muted);background:rgba(255,255,255,0.05);padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">
+          <a href="index.html" style="color:#0f766e;text-decoration:none;">DE</a>
+          <span style="opacity:0.3">|</span>
+          <a href="index.en.html" class="hover:text-white transition-colors" style="text-decoration:none;">EN</a>
+        </div>
+      </div>
+      <button class="nav-hamburger md:hidden" id="navHamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="mobileMenu" aria-hidden="true">
+    <button style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">&times;</button>
+    <div class="mm-brand">HandwerkerBonus</div>
+    <div class="mm-grid">
+      <a href="#problem" class="mm-link" onclick="closeMobileMenu()">Problem</a>
+      <a href="#warum" class="mm-link" onclick="closeMobileMenu()">Lösung</a>
+      <a href="#funktionen" class="mm-link" onclick="closeMobileMenu()">Funktionen</a>
+      <a href="#process" class="mm-link" onclick="closeMobileMenu()">Prozess</a>
+      <a href="#ablauf" class="mm-link" onclick="closeMobileMenu()">So geht's</a>
+      <a href="#faq" class="mm-link" onclick="closeMobileMenu()">FAQ</a>
+      <a href="#final-cta" class="mm-link" onclick="closeMobileMenu()">Zur App</a>
+    </div>
+    <div style="margin-top:2rem;display:flex;justify-content:center;gap:1.5rem;font-size:1.2rem;font-weight:700;">
+      <a href="index.html" style="color:#0f766e;text-decoration:none;">DE</a>
+      <span style="color:var(--color-border);">|</span>
+      <a href="index.en.html" style="color:var(--color-muted);text-decoration:none;">EN</a>
+    </div>
+  </div>
+
+  <section class="relative flex items-center justify-center overflow-hidden pt-[160px] pb-[130px]" id="hero">
+    <canvas id="heroParticles" class="absolute inset-0 z-[1]"></canvas>
+    <div class="absolute inset-0 z-0" style="background:radial-gradient(ellipse 70% 55% at 50% 40%,rgba(15,118,110,.09)0%,transparent 65%),radial-gradient(ellipse 50% 60% at 20% 80%,rgba(15,118,110,.05)0%,transparent 50%),radial-gradient(ellipse 45% 50% at 80% 25%,rgba(13,148,136,.07)0%,transparent 50%);"></div>
+    <div class="absolute inset-0 z-0 opacity-[.06]" style="background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,black 0%,transparent 70%);"></div>
+
+    <div class="relative z-10 text-center max-w-[960px] px-5">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7" style="background:rgba(15,118,110,.12);border:1px solid rgba(15,118,110,.35);">
+        <img src="app-icon-light.svg" alt="HandwerkerBonus" style="width:16px;height:16px;">
+        <span style="font-size:.8rem;font-weight:700;color:#0e9488;letter-spacing:.06em;text-transform:uppercase;">§35a Handwerkerbonus. KI-gestützt. DSGVO-konform.</span>
+      </div>
+
+      <h1 class="reveal text-3xl md:text-7xl lg:text-8xl font-bold leading-[1.08] tracking-tight mb-6">
+        Bis zu 1.200 €<br><span class="gradient-text">vom Finanzamt zurück — automatisch.</span>
+      </h1>
+      <p class="reveal text-lg md:text-xl max-w-[680px] mx-auto leading-relaxed" style="color:var(--color-muted);">
+        HandwerkerBonus prüft eure Handwerkerrechnungen per KI, berechnet den §35a-Bonus und erstellt den fertigen PDF-Export für ELSTER.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://handworkerbonus.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;background:#0f766e;color:#fff;font-size:.95rem;font-weight:700;border-radius:12px;text-decoration:none;transition:all .25s ease;box-shadow:0 4px 24px rgba(15,118,110,.3);">Jetzt Beleg hochladen</a>
+      </div>
+
+      <p class="reveal mt-5 text-sm" style="color:#8e8e93;">Ein Beleg. Drei Klicks. Bis zu 1.200 € zurück.</p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-[120px] z-20" style="background:linear-gradient(to bottom, transparent, #0f1117);"></div>
+  </section>
+
+  <section class="relative section-dark" id="problem" style="padding:6.5rem 0 5rem;margin-top:-2px;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <h2 class="reveal text-4xl md:text-6xl font-black leading-[1.05] tracking-tight mb-6" style="color:#f0f0f2;">
+        Viele Haushalte verschenken jährlich<br><span style="color:#0f766e;">ihren §35a-Steuerbonus</span>
+      </h2>
+      <p class="reveal text-lg max-w-[620px] leading-relaxed mb-16" style="color:#9a9aaa;">Diese drei Kennzahlen zeigen, warum ein strukturierter §35a-Prüfprozess so wichtig ist.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(15,118,110,.07);border:1px solid rgba(15,118,110,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#0f766e;" data-target="40000000" data-separator=".">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">Haushalte in Deutschland</span>
+          <span class="block text-xs" style="color:#7a7a88;">haben grundsätzlich Anspruch auf §35a</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(15,118,110,.07);border:1px solid rgba(15,118,110,.25);">
+          <span class="block text-xs font-semibold mb-2 uppercase tracking-[0.12em]" style="color:#0e9488;">bis zu</span><span class="block stat-value font-black leading-none mb-1 tabular-nums" style="color:#0f766e;" data-target="1200" data-separator=".">0</span><span class="block text-sm font-semibold mb-2" style="color:#d3d3da;">€</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">§35a-Bonus pro Jahr</span>
+          <span class="block text-xs" style="color:#7a7a88;">20% von max. 6.000 € Lohnkosten</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(15,118,110,.07);border:1px solid rgba(15,118,110,.25);">
+          <span class="block text-xs font-semibold mb-2 uppercase tracking-[0.12em]" style="color:#0e9488;">unter</span><span class="block stat-value font-black leading-none mb-1 tabular-nums" style="color:#0f766e;" data-target="60">0</span><span class="block text-sm font-semibold mb-2" style="color:#d3d3da;">Sekunden</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">vom Beleg bis zum ELSTER-PDF</span>
+          <span class="block text-xs" style="color:#7a7a88;">OCR + formale Prüfung automatisch</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 section-dark" id="warum" style="background:#050508;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-5" style="color:#f0f0f2;">Warum HandwerkerBonus</h2>
+        <p class="reveal text-lg max-w-[650px] mx-auto leading-relaxed" style="color:#9999a1;">Vier klare Vorteile für alle, die ihren §35a-Bonus nicht liegen lassen wollen.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">OCR &amp; formale Prüfung in unter 60 Sekunden</h3>
+          <p style="color:#9a9aaa;">Alle Pflichtangaben nach §35a EStG werden automatisch erkannt und geprüft (K-01..K-08). Fehler und fehlende Angaben werden sofort markiert.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">ELSTER-fertiger PDF-Export</h3>
+          <p style="color:#9a9aaa;">Ein Klick genügt. Der Export ist finanzamtfest und kann direkt in ELSTER oder Mein ELSTER eingefügt werden.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">DSGVO-konform, EU-Hosting Frankfurt</h3>
+          <p style="color:#9a9aaa;">Alle Daten werden ausschließlich in der EU verarbeitet (Hosting: Frankfurt). Kein Datentransfer außerhalb der EU.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Kostenlos bis zu 1 Beleg pro Jahr</h3>
+          <p style="color:#9a9aaa;">Der Free-Plan umfasst 1 Beleg pro Jahr. Pro-Pläne ab €4.99 pro Monat für unbegrenzte Belege.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funktionen" class="py-24 section-alt">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Kernfunktionen, die euch entlasten</h2>
+        <p class="reveal text-lg max-w-[680px] mx-auto" style="color:var(--color-muted);">Alle wichtigen Funktionen des HandwerkerBonus in einer klaren, alltagstauglichen Oberfläche.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Beleg hochladen</h3>
+          <p style="color:var(--color-muted);">PDF, JPG oder PNG. Drag-Drop, Kamera oder Dateiauswahl. Direkt loslegen — keine Registrierung für den ersten Beleg nötig.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">KI-OCR &amp; formale Prüfung</h3>
+          <p style="color:var(--color-muted);">Automatische Texterkennung und Prüfung aller Pflichtangaben nach §35a EStG. Confidence-Score für jede Angabe.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">§35a Bonusberechnung</h3>
+          <p style="color:var(--color-muted);">Sofort sichtbar: Lohnanteil, Bonusbetrag, Jahreskapazität und verbleibende Kapazität für das laufende Jahr.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">ELSTER PDF-Export</h3>
+          <p style="color:var(--color-muted);">ELSTER-fertiger PDF-Export auf Knopfdruck. Finanzamtfest. Für jeden Beleg und als Jahresabschluss.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="process" style="background:#090a0e;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">Hauptprozess als Prüffluss</h2>
+        <p class="reveal text-lg max-w-[760px] mx-auto" style="color:#a2a2ab;">Das Ziel von HandwerkerBonus: aus einem Beleg automatisch einen finanzamtfesten §35a-Antrag machen. Der Ablauf zeigt den realen Weg vom Scan bis zur Einreichung.</p>
+      </div>
+      <div class="reveal process-shell" id="processFlow">
+        <div class="process-track">
+          <div class="process-track__bar" id="processFlowBar"></div>
+          <div class="process-track__dot" id="processFlowDot"></div>
+        </div>
+        <div class="process-grid">
+          <article class="process-step process-step--active" tabindex="0">
+            <div class="process-step__index">01</div>
+            <h3 class="process-step__title">Start ohne Konto</h3>
+            <p class="process-step__text">Ersten Beleg hochladen. Keine Registrierung, keine Hürde für den ersten Test.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Kein Login nötig für den ersten Beleg. Direkt loslegen und den §35a-Bonus berechnen lassen.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">02</div>
+            <h3 class="process-step__title">KI erkennt &amp; prüft</h3>
+            <p class="process-step__text">OCR liest alle Rechnungsdaten. Formale Prüfung K-01..K-08 prüft alle Pflichtangaben.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Fehlende oder fehlerhafte Angaben werden sofort markiert und können direkt bearbeitet werden.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">03</div>
+            <h3 class="process-step__title">Bonus berechnen</h3>
+            <p class="process-step__text">§35a-Bonus sofort sichtbar: Lohnanteil, Bonusbetrag und Jahreskapazität.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Die Berechnung ist deterministisch — kein KI-Raten, immer präzise nach §35a EStG.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">04</div>
+            <h3 class="process-step__title">PDF exportieren &amp; einreichen</h3>
+            <p class="process-step__text">ELSTER-fertiger PDF-Export auf Knopfdruck, bereit zur Einreichung beim Finanzamt.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Ergebnis: Ein finanzamtfester PDF-Export, den ihr direkt in ELSTER oder Mein ELSTER einreichen könnt.</div>
+          </article>
+        </div>
+        <p class="process-target"><strong>Ziel:</strong> Euren §35a-Bonus vollständig und rechtssicher geltend machen — ohne Steuerberater, in unter 60 Sekunden.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" style="background:#0f1117;" id="ablauf">
+    <div class="max-w-[1000px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">So funktioniert es in 3 Schritten</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#0e9488;">Schritt 1</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Beleg hochladen</h3>
+          <p style="color:#9a9aaa;">PDF oder Foto der Handwerkerrechnung hochladen. Keine Registrierung für den ersten Beleg.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#0e9488;">Schritt 2</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">KI prüft</h3>
+          <p style="color:#9a9aaa;">Automatische Texterkennung und formale Prüfung nach §35a EStG. Fehlende Angaben werden markiert.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#0e9488;">Schritt 3</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Bonus sichern</h3>
+          <p style="color:#9a9aaa;">§35a-Bonus einsehen und ELSTER-PDF herunterladen. Fertig zur Einreichung beim Finanzamt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24" id="faq">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Häufige Fragen</h2>
+      </div>
+      <div id="faqList" class="rounded-2xl bg-white border overflow-hidden">
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Was ist §35a und wer hat Anspruch?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">§35a EStG ist die Steuerermäßigung für Handwerkerleistungen im Haushalt. Bis zu 20% der Lohnkosten (max. 1.200 € pro Jahr) können direkt von der Einkommensteuer abgezogen werden. Berechtigt sind alle Mieter und Eigentümer in Deutschland.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Welche Rechnungen kann ich hochladen?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Alle Handwerkerrechnungen für Arbeiten im eigenen Haushalt: Renovierung, Reparatur, Modernisierung, Wartung und ähnliche Handwerkerleistungen. Die Rechnung muss den Lohnanteil separat ausweisen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Wie lange dauert die Prüfung?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Unter 60 Sekunden vom Beleg-Upload bis zum fertigen PDF für ELSTER. OCR-Erkennung und alle formalen Prüfungen (K-01..K-08) laufen automatisch.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Ist HandwerkerBonus kostenlos?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Ja, bis zu 1 Beleg pro Jahr ist HandwerkerBonus kostenlos nutzbar. Pro-Pläne ab €4.99 pro Monat für unbegrenzte Belege.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="final-cta" style="background:#050508;">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10 text-center">
+      <h2 class="reveal text-3xl md:text-5xl font-black leading-[1.1] mb-5" style="color:#f0f0f2;">Jetzt euren §35a-Bonus berechnen — kostenlos starten.</h2>
+      <p class="reveal text-lg max-w-[620px] mx-auto mb-9" style="color:#9a9aaa;">Kostenlos, direkt nutzbar und auf das Wesentliche reduziert.</p>
+      <div class="reveal flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://handworkerbonus.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;background:#0f766e;color:#fff;font-weight:700;border-radius:12px;text-decoration:none;">Jetzt ersten Beleg hochladen</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#050508;color:#8e8e93;padding:32px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,.08);">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <img src="app-icon-light.svg" alt="HandwerkerBonus" style="width:18px;height:18px;opacity:.85;">
+      <span style="font-weight:700;color:#f0f0f2;">HandwerkerBonus</span>
+    </div>
+    <p style="font-size:.9rem;">§35a Steuerbonus-Rechner für Handwerkerleistungen.</p>
+    <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:.85rem;">
+      <a href="https://handworkerbonus.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:#2dd4bf;text-decoration:none;">App öffnen</a>
+      <a href="impressum.html" style="color:#2dd4bf;text-decoration:none;">Impressum</a>
+      <a href="agb.html" style="color:#2dd4bf;text-decoration:none;">AGB</a>
+      <a href="datenschutz.html" style="color:#2dd4bf;text-decoration:none;">Datenschutz</a>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Nach oben">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+    <div class="cookie-banner__inner">
+      <h3 style="font-weight:700;font-size:1.05rem;margin-bottom:.45rem;">Cookie-Hinweis</h3>
+      <p style="font-size:.92rem;line-height:1.6;color:#4d4d55;">HandwerkerBonus verwendet lokalen Browserspeicher und Cookies, damit eure Sitzung erhalten bleibt. Wir nutzen EU-Hosting in Frankfurt und verarbeiten alle Daten DSGVO-konform.</p>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap;">
+        <button class="cookie-banner__btn cookie-banner__btn--reject" data-cookie-action="reject">Schließen</button>
+        <button class="cookie-banner__btn cookie-banner__btn--accept" data-cookie-action="accept">Verstanden</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
